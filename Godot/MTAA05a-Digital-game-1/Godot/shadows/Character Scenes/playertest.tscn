@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Player_look_at_mouse.gd" type="Script" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/obstacle.png-dfb3e99d3af573251007cdf5e1c252b9.stex"
+
+[sub_resource type="OccluderPolygon2D" id=2]
+closed = false
+polygon = PoolVector2Array( 7.98706, 8.92714, -7.85018, 8.92714, -7.90972, -7.02918, 7.98706, -6.96964 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7.85448, 6.98745 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.392197, 0.0438004 )
+z_index = 2
+texture = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+position = Vector2( 0, -1 )
+occluder = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.455322, 0.952532 )
+shape = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 7.96775, -0.128511 )
+enabled = true
+cast_to = Vector2( 250, 0 )
+collide_with_areas = true

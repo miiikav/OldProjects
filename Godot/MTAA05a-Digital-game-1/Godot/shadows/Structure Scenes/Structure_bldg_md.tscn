@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/caster.png-67727cb056b9e0209664a84f1653a25a.stex"
+
+[sub_resource type="OccluderPolygon2D" id=2]
+cull_mode = 1
+polygon = PoolVector2Array( 16.5373, -17.4724, -14.9423, -17.1652, -15.3639, 14.3168, 16.3967, 14.7775 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+
+[node name="Building" type="Node2D"]
+position = Vector2( 74.3626, -49.2631 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -4614.69, -4639.36 )
+rotation = -3.14159
+scale = Vector2( 13.6936, -26.3258 )
+z_index = 5
+texture = SubResource( 4 )
+offset = Vector2( -346.244, 185.365 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+position = Vector2( -347.081, 187.178 )
+z_index = 6
+occluder = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite/LightOccluder2D"]
+position = Vector2( 0.0733032, -0.274761 )
+rotation = -3.14159
+scale = Vector2( 0.18162, -0.198469 )
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/LightOccluder2D/StaticBody2D"]
+position = Vector2( 0.397217, -36.1271 )
+scale = Vector2( 1, 1.43225 )
+polygon = PoolVector2Array( -91.4497, -34.2956, 83.5707, -34.2955, 83.4841, 73.2209, -90.4315, 74.5752 )

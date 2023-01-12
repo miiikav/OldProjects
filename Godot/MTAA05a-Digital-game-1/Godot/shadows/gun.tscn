@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Area2D.gd" type="Script" id=1]
+[ext_resource path="res://Panel.gd" type="Script" id=2]
+[ext_resource path="res://Character Scenes/playertest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Structure Scenes/Structure_pillar.tscn" type="PackedScene" id=4]
+
+
+
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/lunarrock_d.png-e26e9dd0a156f646d989702ef8ee671f.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/lunarrock_n.png-ce799096a7103c5f362442147d291698.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/light.png-06e94102f0cce323cff7daad56cf3030.stex"
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 11120.1, 6325.39 )
+
+[node name="background" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 3
+material = SubResource( 1 )
+position = Vector2( 140.819, 608.985 )
+scale = Vector2( 2.19999, 2.06707 )
+z_index = 1
+texture = SubResource( 2 )
+normal_map = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 2047.34, -1345.51 )
+scale = Vector2( 12.6114, 33.3381 )
+texture = SubResource( 4 )
+texture_scale = 0.78
+energy = 0.83
+range_height = 2048.0
+range_z_min = 0
+range_z_max = 5
+shadow_enabled = true
+shadow_buffer_size = 16384
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2( -1034.28, 436.817 )
+color = Color( 0.666667, 0.682353, 0.678431, 1 )
+
+[node name="world_depth" type="YSort" parent="."]
+position = Vector2( 17.3623, -1.7959 )
+
+[node name="pillars" type="YSort" parent="world_depth"]
+position = Vector2( 211.48, 42.2959 )
+
+[node name="Pillar" parent="world_depth/pillars" instance=ExtResource( 4 )]
+position = Vector2( 455.671, 1353.51 )
+
+[node name="Pillar2" parent="world_depth/pillars" instance=ExtResource( 4 )]
+position = Vector2( 132.412, 1342.4 )
+
+[node name="Pillar3" parent="world_depth/pillars" instance=ExtResource( 4 )]
+position = Vector2( -236.872, 1348.19 )
+
+[node name="KinematicBody2D" parent="world_depth" instance=ExtResource( 3 )]
+position = Vector2( 36.2897, 1229.83 )
+z_index = 5
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_depth/KinematicBody2D"]
+
+[node name="Light2D2" type="Light2D" parent="world_depth/KinematicBody2D"]
+position = Vector2( 0.13916, -0.097168 )
+scale = Vector2( 2.8253, 2.43463 )
+texture = SubResource( 4 )
+texture_scale = 0.26
+energy = 0.81
+range_height = 2048.0
+range_z_min = 0
+range_z_max = 5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_buffer_size = 16384
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="world_depth/KinematicBody2D"]
+position = Vector2( 0.908957, -1.08841 )
+offset = Vector2( 1, 1 )
+current = true
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="world_depth/KinematicBody2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -1368.0
+margin_right = 1844.0
+margin_bottom = 2435.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 1 )
