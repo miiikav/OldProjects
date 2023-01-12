@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 2.6 - Routing</title>
+</head>
+
+<body>
+    <h1>Exercise 2.6 - Routing</h1>
+    <h2>Exercise overview</h2>
+    <p>In this exercise you get to implement a Node.js server, which is able to route incoming requests based on the
+        path the request is directed to.</p>
+    <p>For example in request to
+        localhost:3000/resources/23 the <em>/resources/23</em> forms the path part of the URL.</p>
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/02_http/2.5-routing</em> directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>In this directory run the command <code>npm init</code> to initialize your Node project. Use the default
+            values
+            offered by npm by pressing
+            Enter.
+        </li>
+        <li>Write your server code in <em>index.js</em> file you create inside this directory</li>
+        <li>When the server receives a request, you must read the path part of the URL. For example in request to
+            localhost:3000/resources/23 the <em>/resources/23</em> forms the path part of the URL. Read the <a
+                href="https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/">Node tutorial</a> for more
+            information on how to do this.</li>
+        <li>Reply to request directed to path <em>/classical</em> by sending the contents of file homer.html from
+            this
+            directory</li>
+        <li>Reply to request directed to path <em>/modern</em> by sending the contents of file bradbury.html from this
+            directory</li>
+        <li>For requests to the default path <em>/</em> respond with the contents of file index.html
+            from this
+            directory</li>
+        <li>For requests to <em>any other paths</em> respond with response that has HTTP status code 404 and
+            statusMessage 'Requested content not found'</li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_write_chunk_encoding_callback">write
+                method</a> to add the body to the response</li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback">end
+                method</a> to end adding to the response, and send it to the client</li>
+        <li>You can run your server by running the command <em>node index.js</em> in this directory</li>
+        <li>Correct all possible mistakes</li>
+        <li>Commit your index.js and package.json files, and push them to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

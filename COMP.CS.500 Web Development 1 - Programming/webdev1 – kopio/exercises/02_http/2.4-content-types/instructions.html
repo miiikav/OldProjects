@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 2.4 - Content types</title>
+</head>
+
+<body>
+    <h1>Exercise 2.4 - Content types</h1>
+    <h2>Exercise overview</h2>
+    <p>In this exercise you create a Node.js server which can send the clients data in the format they request. The
+        data is only available data in XML, JSON, or text content types. The data comes from files in
+        corresponding
+        formats in
+        this
+        exercise forder.</p>
+    <p>For this exercise you can assume that the client only accepts one content type. In reality browsers send <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation/List_of_default_Accept_values">Accept
+            headers</a>, which list accepted content types in ordered lists.</p>
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/02_http/2.4-content-types</em> directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>In this directory run the command <code>npm init</code> to initialize your Node project. Use the default
+            values
+            offered by npm by pressing
+            Enter.
+        </li>
+        <li>Write your server code in <em>index.js</em> file you create inside this directory</li>
+        <li>Inside createServer method's callback, you need to read the incoming request's <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept">Accept header</a>
+            to find which format the client wishes to receive the data in. Remember that for this exercise you can
+            assume that the client only accepts one content type. So you have to read the Accept header value and
+            compare it to the values for the content types: see <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">Common
+                MIME types</a> for more information</li>
+        <li>For JSON, XML, and text formats read the correct file for that format, and send it as response to the
+            client, with the correct HTTP status code. The files are: data.json, data.xml, and data.txt. For info on how
+            to read a file, refer to exercise
+            2.1
+        </li>
+        <li>If any format is acceptable to client (indicated by header: Accept: */*), send the text format data</li>
+        <li>If request specifies any content type other than JSON, XML, or text, send an empty response with
+            "406 Not Acceptable"
+            <a href="https://nodejs.org/api/http.html#http_response_statuscode">HTTP
+                status code</a> and <a href="https://nodejs.org/api/http.html#http_response_statusmessage">status
+                message</a> "Content type not available"</li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_write_chunk_encoding_callback">write
+                method</a> to add the body to the response</li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback">end
+                method</a> to end adding to the response, and send it to the client</li>
+        <li>You can run your server by running the command <em>node index.js</em> in this directory</li>
+        <li>Correct all possible mistakes</li>
+        <li>Commit your index.js and package.json files, and push them to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

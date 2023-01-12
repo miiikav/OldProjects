@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 7.4 - CSRF</title>
+    <link rel="stylesheet" href="css/stylish.css" </head>
+
+<body>
+    <h1>Exercise 7.4 - CSRF</h1>
+    <h2>Exercise overview</h2>
+    <p>There are two server implementations in this directory. The Good Server in good_server.js developed by you, and
+        the Evil Server
+        in
+        evil_server.js developed by a bunch of no-good villains. Your Good Server provides a service for tranferring
+        money
+        between users, but is open to CSRF attacks.
+        Evil Server takes advantage of this. How evil and absolutely-not-cool of them! &#128577;</p>
+    <p>In the exercise you get be a force for Good by implementing a simple CSRF token based security mechanism to stop
+        Evil
+        Server developers from succeeding in
+        their
+        naughtiness.</p>
+    <p>You should read up on CSRF using the course material. Examples of other valuable resources are
+        <a href="https://owasp.org/www-community/attacks/csrf">OWASP's
+            CSRF page</a> and <a href="https://github.com/pillarjs/understanding-csrf">Understanding CSRF</a> </p>
+
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/7.4-csrf</em>
+        directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>There are two files each implementing its own server in this directory: good_server.js (the Good Server)
+            and
+            evil_server.js (the Evil Server)</li>
+        <li>The Good Server has been configured to run on port 3000 of the localhost, while the Evil Server runs on port
+            8081</li>
+        <li>Both the Good Server and the Evil Server can be run in separate terminals. Running
+            <pre><code>node good_server.js</code></pre> in one terminal and
+            <pre><code>node evil_server.js</code></pre> in another should do the trick.
+        </li>
+        <li>You will write your code in this exerice by modifying the existing <em>good_server.js</em> file in this
+            directory</li>
+        <li>Write your code based on the TODOs in the <em>good_server.js</em> file and these looooong instructions</li>
+        </li>
+    </ul>
+
+    <h3>How the Good Server functions</h3>
+    <ul>
+        <li>Make sure that both servers are running</li>
+        <li>Navigate your browser to localhost:3000, and you should see a
+            landing page that looks like this:<br>
+            <img src="images/good_server_landing_page.png" alt="Good Server landing page" />.<br>The page is from the
+            file
+            <em>good_server.html</em>.</li>
+        <li>The required login credentials for the only user in the system are defined in the <em>users array</em>
+            of the good_server.js.
+            The username is <em>good_user</em> and the password is <em>good_pass</em>. Enter them on the
+            landing page and click the "Login" button
+        </li>
+        <li>If you enter the right login credentials, you should be directed to a page that looks something like
+            this:<br>
+            <img src="images/good_server_successful_login_page.png" alt="Good Server successful login" />.<br>The page
+            is
+            defined as a template literal in good_server.js file.</li>
+        <li>When looking at the code in good_server.js, it can be seen that after successful login a cookie is set.
+            This cookie is named secret_for_good_server, and it is used to identify the user which has logged in the
+            later
+            communication between the browser and the server.</li>
+        <li>You can now click the "transferring money" link on the page</li>
+        <li>You should be directed to a page which looks something like:<br> <img
+                src="images/good_server_money_transfer.png" alt="Good Server money transfer" />.<br> The page is
+            defined as a template literal in good_server.js file. You can enter any value in to the "Transfer to" field.
+            Field
+            "Sum to transfer (in full Euros)" can be any positive integer. Both fields are mandatory. After filling the
+            fields click "Tranfer money" button.</li>
+        <li>After the transfer is complete, you are should see a page like:<br>
+            <img src="images/good_server_transfer_complete.png" alt="Good Server money transfrer complete" />.<br> The
+            page is
+            defined as a template literal in good_server.js file. </li>
+        <li>New money transfers can be done without logging in again, as long as the set cookie exists</li>
+    </ul>
+
+    <h3>How the Evil Server functions</h3>
+    <ul>
+        <li>Make sure that both servers are running</li>
+        <li>Navigate to localhost:8081. You should see a page that is similar
+            to:<br> <img src="images/evil_server.png" alt="Evil Server" /></li>
+        <li>To keep the exercise focused and performed attack obvious, Evil Server is extremely simple: it
+            just serves a single page with a single
+            link. But the link is full of evil with a side of CSRF attack! Looking at the link, it sends a request to
+            the Good
+            Server which
+            transfers money to the
+            evil_user from the user, who has previously logged in to the Good Server. This logged-in user is identified
+            by the Good Server based on only on the browser cookie, so Evil Server can exploit this poor, innocent
+            cookie.
+        </li>
+        <li>After clicking the link on the Evil Server user is directed to money transfer page on the Good Server
+            informing the user that
+            money has been transfered from them to the user evil_user</li>
+        <li>There are other ways of exploiting CSRF
+            vulnarabilities,
+            that would be less obvious, but in this exercise showing the attack explicitly is wanted</li>
+        <li>The CSRF attack works, as by default the browser sends all the cookies that have been set with every
+            request. As a sidenote: browsers' behaviour can be modified on per cookie basis by setting certain values
+            for the cookie, see <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie">MDN's
+                Set-Cookie page</a>.
+        </li>
+    </ul>
+
+    <h3>What you need to do: mitigate the CSRF attack</h3>
+    <ul>
+        <li>Mitigating CSRF attacks can be done by adding a hidden field to forms. The value for this field is set on
+            the Good Server to
+            a unique value for each request. The value needs to be unique so that attackers can't guess
+            it</li>
+        <li>The values for CSRF tokens need to be saved so that they can be checked for each request, and tokens
+            neeed to be removed
+            when they have been
+            checked.</li>
+        <li>In this exercise you need
+            implement the TODOs in the <em>good_server.js</em> file to implement this mitigation</li>
+    </ul>
+
+    <h3>Submitting your work</h3>
+    <ul>
+        <li>Commit your good_server.js file, and push it to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

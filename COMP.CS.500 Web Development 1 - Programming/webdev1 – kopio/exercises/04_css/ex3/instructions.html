@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Positioning</h2>
+    <p>
+        Image visualizes it more clearly than plenty of words, see Fig.1.
+    </p>
+
+    <figure>
+        <img src="img/onlineshop.png" alt="online shop" style="width:40%">
+        <figcaption>Fig.1 - Online shop UI</figcaption>
+    </figure>
+
+
+    <ul>
+        <li>Header is the first container, with the nested nav element.</li>
+        <li>Next, comes main with an article in it, the article is not visible
+            It functions just as a container</li>
+        <li>Inside the article,
+            there are three sections and two aside elements.</li>
+        <li>Footer is the bottommost element under main.</li>
+    </ul>
+    <p>The positioning and container-containee relationships must be implemented as described.
+        In case of many containees, ids are necessary.
+        Ids are unique, and they make it easier to point to a specific element
+        e.g. when positioning them. Ids should be as described in the table:
+    </p>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <table>
+        <tr>
+            <td>Parent</td>
+            <td>Tag</td>
+            <td>Id</td>
+        </tr>
+        <tr>
+            <td>header</td>
+            <td>nav</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>article</td>
+            <td>section</td>
+            <td>sec1, sec2 and sec3</td>
+        </tr>
+        <tr>
+            <td>article</td>
+            <td>aside</td>
+            <td>aside1, aside2</td>
+        </tr>
+        <tr>
+            <td>footer</td>
+            <td>nav</td>
+            <td>nav1, nav2</td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

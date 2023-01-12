@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 2.3 - Echo server</title>
+</head>
+
+<body>
+    <h1>Exercise 2.3 - Echo server</h1>
+    <h2>Exercise overview</h2>
+    <p>In this exercise you will create a Node.js server, which reads the body of the incoming requests, and sends that
+        same body as response. So, the server echoes the request.</p>
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/02_http/2.3-echo-server</em> directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>In this directory run the command <code>npm init</code> to initialize your Node project. Use the default
+            values
+            offered by npm by pressing
+            Enter.
+        </li>
+        <li>Write your server code in <em>index.js</em> file you create inside this directory</li>
+        <li>Inside createServer method's callback, you need to capture the events that are emitted when message body is
+            being received. For a quick reminder on how to do this, read <a
+                href="https://nodejs.org/es/docs/guides/anatomy-of-an-http-transaction/#request-body">Node tutorial's
+                example</a></li>
+        <li>Use <a
+                href="https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers">response's
+                writeHead-method</a> to set the correct HTTP response status code (200) and content type (text/plain)
+            for the response.
+        </li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_write_chunk_encoding_callback">write
+                method</a> to add the body to the response</li>
+        <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback">end
+                method</a> to end adding to the response, and send it to the client</li>
+        <li>You can run your server by running the command <em>node index.js</em> in this directory</li>
+        <li>You can test the server for example with cURL. Something like the following should work:
+            <pre>
+            curl --location --request POST 'localhost:3000' \
+            --header 'Content-Type: text/plain' \
+            --data-raw 'All together now!'        
+        </pre>. In the server's response the body should be 'All together now!'.
+        </li>
+        <li>Correct all possible mistakes</li>
+        <li>Commit your index.js and package.json files, and push them to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

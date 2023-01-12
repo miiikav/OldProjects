@@ -1,0 +1,92 @@
+
+*{
+    margin: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+  
+  }
+
+body{
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    /* TODO: modify the line below to add the needed grid-template-areas */
+    grid-template-areas:  "h h h"
+                          "m m m"
+                          "m m m"
+                          "m m m"
+                          "f f f"; 
+    height: 100vh;
+}
+
+body > header{
+    background-color: lavender;
+    width: 100%;
+    padding: 1.5rem;
+    grid-area: h;
+}
+
+body > main{
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100%;
+    grid-area: m;
+}
+body > footer{
+    background-color: darkslategray;
+    grid-area: f;
+    display: grid;
+    /* TODO: modify the line below to add the needed grid-template-areas */
+    grid-template-areas:  ". n1 n1 n2 .";
+    padding: 1.5rem;
+}
+body > header > nav {
+    grid-area: test;
+}
+body > main > article {
+    background-color: lightblue;
+    border: solid;
+    margin: 0;
+    display: grid;
+    /* TODO: modify the line below to add the needed grid-template-areas */
+    grid-template-areas: "s1 a1"
+                         "s2 a2"
+                         "s3 .";
+    height: 100%;
+}
+
+body > main > article > section{
+    border: solid;
+    /* box-sizing: border-box; */
+    margin: 0;
+}
+body > main > article > aside{
+    border: solid;
+    /* box-sizing: border-box; */
+    background-color: cornflowerblue;
+    margin: 0;
+}
+
+
+
+/* TODO: add the needed CSS rules below to set the required grid-area for each element with an ID */
+body > main > article > #sec1{
+    grid-area: s1;
+}
+body > main > article > #sec2{
+    grid-area: s2;
+}
+body > main > article > #sec3 {
+    grid-area: s3;
+}
+body > main > article > #aside1 {
+    grid-area: a1;
+}
+body > main > article > #aside2 {
+    grid-area: a2;
+}
+body > footer > #nav1 {
+    grid-area: n1;
+}
+body > footer > #nav2 {
+    grid-area: n2;
+}

@@ -1,0 +1,135 @@
+
+var expect = require('chai').expect;
+const { assert } = require('chai');
+const draw = require('../../misc/draw');
+const async = require('../async');
+const DOMParser = require('dom-parser');
+const fs = require('fs');
+const path = require('path');
+
+describe('implementation with Promise', function(){
+
+  let code;
+  const filename = "async.js";
+  before(function () {
+    const tmp = fs.readFileSync(path.resolve('.', filename)).toString('utf8');
+    try{
+      code = babel.transform(js,{
+        filename: filename//you need this filename for some reason, even if jibberish
+    }).code;
+      }catch{
+        code = tmp;
+    }
+  });
+
+  it('must contain async', ()=>{
+    assert(
+      (code.includes("async")),
+      `${code} must include async`);
+    }
+  );
+
+  it('must contain await', ()=>{
+    assert(
+      (code.includes("await")),
+      `${code} must include await`);
+    }
+  );
+
+it('must contain Promise', ()=>{
+    assert(
+      (code.includes("Promise")),
+      `${code} must include Promise`);
+    }
+  );
+  
+});
+
+
+
+
+describe('drawArrowsAsync()', function () {
+  let canvas = {};
+  const parser = new DOMParser();
+  const actors = ["hello", "world"];
+
+
+  beforeEach(function () {
+    // avoid object references and create copies
+    canvas = draw.getCanvasInNode();
+    draw.setCanvas(canvas);
+  });
+
+
+  it('must return one line', function () {
+
+    const timeout = 1000;
+    draw.drawArrowsAsync(canvas, actors, timeout);
+    setTimeout(() => {
+      const svg = canvas.svg();
+      const xmlDoc = parser.parseFromString(svg, "text/xml");
+      const lines = xmlDoc.getElementsByTagName("line");
+      const len = lines.length;
+      expect(len).to.equal(1);
+    }, 0.7 * timeout)
+  });
+
+  it('must return two lines', done => {
+
+    const timeout = 1000;
+    draw.drawArrowsAsync(canvas, actors, timeout);
+    try {
+      setTimeout(() => {
+        try {
+          const svg = canvas.svg();
+          const xmlDoc = parser.parseFromString(svg, "text/xml");
+          const lines = xmlDoc.getElementsByTagName("line");
+          const len = lines.length;
+          expect(len).to.equal(2);
+          done();
+        } catch (err) {
+          assert.fail(err);
+          // done();
+          throw err;
+        }
+      }, 1.5 * timeout);
+    } catch (err) {
+      assert.fail(err);
+      done();
+    }
+
+  });
+
+
+  it('must return lines N= 2 x actors ', done => {
+    
+    const timeout = 200;
+    const actors2 = ["mobile client", "router", "controller", "model", "mongoDB"]
+    draw.drawArrowsAsync(canvas, actors2, timeout);
+    try {
+      setTimeout(() => {
+        try {
+          const svg = canvas.svg();
+          const xmlDoc = parser.parseFromString(svg, "text/xml");
+          const lines = xmlDoc.getElementsByTagName("line");
+          const len = lines.length;
+          expect(len).to.equal(actors2.length - 1);
+          done()
+        } catch (err) {
+          assert.fail(err);
+          // done()
+          throw err;
+        }
+      }, (actors2.length - 1) * timeout)
+    } catch (err) {
+      assert.fail(err);
+      done();
+    }
+  });
+
+
+
+});
+
+
+

@@ -1,0 +1,81 @@
+<title>Reading is fun!</title>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 7.1 - XSS</title>
+</head>
+
+<body>
+    <h1>Exercise 7.1 - XSS</h1>
+    <h2>Exercise overview</h2>
+    <blockquote>
+        <p>Cross-site scripting (XSS) is a security exploit which allows an attacker to inject malicious
+            code into a website. This code is executed by the victims browsers or other clients, and lets the attackers
+            bypass access controls and
+            impersonate users. </p>
+        <cite><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks#Cross-site_scripting_XSS">MDN
+                - XSS</a></cite>
+    </blockquote>
+
+    <p>The MDN page also lists three categories of XSS attacks: stored (also called persistent), reflected (also called
+        non-persistent), or DOM-based.</p>
+
+    <p>In this exercise you get to write a Node a server with simple defence against reflected XSS attacks. Defence is
+        based on
+        manually
+        escaping user input.</p>
+
+    <p>NOTE: while usable in this exercise, in larger real-world Web apps manual escaping should not be used. From <a
+            href="https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS">Google's XSS page</a>:
+        <em>"Writing your own code for escaping input and then properly and consistently applying it is extremely
+            difficult. We do not recommend that you manually escape user-supplied data. Instead, we strongly recommend
+            that you use a templating system or web development framework that provides context-aware
+            auto-escaping</em>."</p>
+
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/07_security/7.1-xss </em>
+
+        directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>Write your server code by modifying the existing <em>index.js</em> file in this directory</li>
+        <li>Write your code based on the TODOs in the <em>index.js</em> file and these instructions</li>
+        <li>You can run your server by running the command <em>node index.js</em> in this directory</li>
+        <li>The value of the query string parameter <em>addThisText</em> is inserted on to the page
+            without any escaping or encoding. This enables XSS attacks.</li>
+        <li>XSS attack can be performed just by entering into your <em>browser's</em> address bar the following text:
+            <pre>
+                http://localhost:3000/?addThisText=%3Cscript%3Ealert(%22XSS%20ALERT!!!%22)%3C/script%3E
+            </pre>
+            where query string parameter <em>addThisText</em> has been used to inject a script on the Web page which
+            is
+            rendered
+            as response
+        </li>
+        <li>After you press Enter ja send the request, you will see an alert popup <em>"XSS ALERT!!!"</em>. This is just
+            an example which
+            shows
+            that an attacker can inject any script they
+            wish to this site, because the user input has not been sanitized. Horrible, let's do something about this!
+        </li>
+        <li>Find a way to encode the <em>addThisText</em> in a way that the possible scripts or other malicious user
+            input won't
+            run, but all the
+            text user enters as the value for the <em>addThisText</em> query parameter is shown as human-readable text
+            on the page
+            in the
+            same place it is now. Hint: keep <em>encoding that URI component</em> really, really, really simple. :-)
+        </li>
+        <li>Commit your index.js file, and push it to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+    <p>Further reading: <a href="https://xss-game.appspot.com/">Google's XSS game </a> is a fun way to learn about how
+        to prevent XSS attacks on your sites.</p>
+
+</body>
+
+</html>

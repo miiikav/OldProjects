@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>npm commands</h2>
+    <p>In setting-up and developing the project, the most common npm commands are the following:</p>
+    <ul>
+        <li><code>npm init</code> to setup your first node project. Results: <code>package.json</code></li>
+        <li><code>npm install</code> to add new packages. Installs are found in node_modules subdirectory. In code, new
+            functionality can be now required and taken into use</li>
+        <li><code>npm start</code>, once setup, the project is ready to use!</li>
+        <li><code>npm test</code>. In this course, testing is practices from the very beginning to the very end. Hello
+            Mocha!, next exercise, introduces
+            the used test framework</li>
+    </ul>
+
+
+    <h3>Solving The Exercise step-by-step</h3>
+
+    <h4>npm init</h4>
+    <p>First, create an empty hellonode.js file with command <code>touch hellonode.js</code>, to provide an entry point
+        for
+        <code>npm init</code>.</p>
+    <p>The node.js project setup is run in the directory webdev1/exercises/01_tools with <code>npm init</code></p>
+    <pre class="terminal">
+$$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (01_tools) 
+version: (1.0.0) 
+description: 
+entry point: (index.js) hellonode.js
+test command: 
+git repository: 
+keywords: 
+author: 
+license: (ISC) 
+About to write to /home/pia/Documents/tyo/webdev/test/exercises/01_tools/package.json:
+
+{
+  "name": "01_tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hellonode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) 
+
+</pkg>
+</pre>
+
+    <h4><a href="https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file">Install
+            dependencies with npm install</a></h4>
+    <p>Installation of additional node modules can be done either locally or globally.
+        Local means that the modules are for the defined project only.
+        Local version of npm installation is run without any options, or with --save, if one wants to be more explicit.
+        The command modifies <code>package.json</code> and installes the modules in the dir node_modules.
+        If you go and check what is found inside, all the corresponding *.js are there.
+        If node project is moved to another device, all the installation instructions transfer along with package.json.
+        All you need is call <code>npm install</code> in the new environment.
+    </p>
+    <p>
+        If the installation is done globally, <code>-g</code> makes the trick.
+        Globally installed modules will be available for all the node projects,
+        but they do not update into package.json, thus are not transferrable
+        from env to env.
+    </p>
+
+    <h4>Install lodash package</h4>
+    <pre class="terminal">
+npm install lodash
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN 01_tools@1.0.0 No description
+npm WARN 01_tools@1.0.0 No repository field.
+
++ lodash@4.17.15
+added 1 package from 2 contributors and audited 1 package in 0.646s
+found 0 vulnerabilities
+
+(base) webdev1/exercises/01_tools$ cat package.json 
+{
+    "name": "01_tools",
+    "version": "1.0.0",
+    "description": "",
+    "main": "hellonode.js",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+    "lodash": "^4.17.15"
+    }
+}
+    </pre>
+
+    <p>
+        After lodash is installed, a new directory <code>node_modules</code> will appear,
+        and under it, there exists the newly created sub-dir <code>lodash</code>:</p>
+    <pre>
+    .
+    └── exercises/
+        └── 01_tools
+            ├── hellonode.js
+            ├── package.json
+            ├── node_modules/
+            │   └── lodash
+            │       ├── add.js
+            └── ...          
+            └── .gitignore
+    </pre>
+
+    <p>Let us examine lodash more closely:</p>
+    <pre>
+/exercises/01_tools/node_modules/lodash$ ls | wc -l
+635    
+</pre>
+    <p> After installation, the changes are plenty.
+        Check which untracked changes are shown in git:</p>
+    <pre class="terminal">
+        git status
+    </pre>
+
+
+    <h4>Ignore node_modules</h4>
+    <p>To omit the unneccary load for the git version control,
+        these new 635 js modules must be ignored, add
+        .gitignore in the exercise directory 01_tools, e.g., in the command prompt:
+    </p>
+    cat >.gitignore
+    node_modules/
+    Ctrl-D
+    </pre>
+    <p><code>man cat</code> can tell us about con<strong>cat</strong>enate command more, it ..</p>
+    <cite>
+        concatenates files and prints on the standard output
+    </cite>
+    <p> In the command, <code>cat >.gitignore</code> ">" arrow directs the input to a defined file ".gitignore".
+        ">>" would append new last lines to the existing file.
+        Once <code>node_modules</code> have been added, <code>Ctrl-D</code> key combination quits the edit.
+        After .gitignore is effective, <code>git status</code> output should shorten.
+    </p>
+
+
+
+    <h4>Install Nodemon</h4>
+    <p>In this exercise, we will also take nodemon monitoring system in use.</p>
+    <p>
+        <a href="https://nodemon.io/">Nodemon documentation</a>
+        describes it as a utility monitoring for changes in source and
+        automatically restarting your server,
+        which is stated to be "perfect" for development. It is installed with the command:
+    </p>
+
+    <pre class="terminal">
+          $ <strong>npm install nodemon</strong>
+        </pre>
+
+    <p>With Vagrant you need to use <em>sudo</em> to install with root privilidges. The command becomes:</p>
+    <pre class="terminal">
+            $ <strong>sudo npm install nodemon</strong>
+          </pre>
+
+    <p>package.json is updated accordingly, now in </p>
+    <pre>
+        "devDependencies": {
+            "nodemon": "^1.19.4"
+          },
+        </pre>
+    <p>Nodemon is for development not production phase. In production,
+        the files are not expected to be changed on fly. When developing,
+        one has then to use <kbd>nodemon</kbd> instead of <kbd>node</kbd>
+        to run programs, i.e.:
+    </p>
+    <pre>nodemon hellonode</pre>
+
+
+
+    <h4>hellonode greets node</h4>
+    <p>
+        Finally, edit <code>exercises/01_tools/hellonode.js</code> on your favorite code editor... or if
+        you don't have a code editor read
+        <a href="http://www.sitepoint.com/sitepoint-smackdown-atom-vs-brackets-vs-light-table-vs-sublime-text/"
+            target="_blank">review of editors</a> that are particularly
+        well suited for this course. If you have no preferences
+        <a href="https://code.visualstudio.com/" target="_blank">VS Code</a> is a good choice that we support and
+        recommend, because the editor is pre-installed in Exam classes as well.
+        </pre>
+    <p>hellonode takes lodash in use, see <a href="http://zetcode.com/javascript/lodash/">Lodash documentation</a>
+    <pre><code>const _ = require("lodash");
+const ver = _.VERSION;
+console.log(ver);    
+    </code></pre>
+
+    <p>You can test what you have achieved this far by calling: </p>
+    <pre><code>node hellonode.js</code></pre>
+
+    </p>
+    <p>hellonode.js must also define an a function <code>hellonode(array)</code>.
+        The function simply returns the first and the last item of an array
+        concatenated as one string with the help of <code>first()</code> and <code>last()</code>
+        functions of lodash; remember, that these lodash methods have to be called with
+        an appropriate dot notation.
+        For example, if
+        an array of strings <code>["hello", "goodbye", "alpha", "omega", "edge", "node"]</code>
+        is given as an argument, the hellonode() function is expected to return a string "<samp>hello node</samp>".</p>
+
+
+    <p>Please also make your function available for <code>require</code> by adding
+        <code>module.exports = hellonode</code> at the end of your file.
+    </p>
+
+
+    <h4>module.exports makes your code reusable</h4>
+
+    The modularity implies that a code can be shared in modules.
+    In node.js, this requires <code>module.exports</code> from the
+    code provider, and <code>require('module')</code> from the "consumer".
+    More about node modules <a
+        href="https://www.nodebeginner.org/blog/post/nodejs-tutorial-what-are-node.js-modules/">here</a>.
+    </p>
+
+    <h4>Return your exercise in git repo</h4>
+    <p>Returnables:</p>
+    <ul>
+        <li>Generated package.json with the init script "hellonode.js"</li>
+        <li>Installed lodash and nodemon must exist in package.json</li>
+        <li>.gitignore is added to the root</li>
+        <li>hellonode.js that must print the first and the last item of an array concatenated as a string</li>
+        <li>Changes added, commited and then pushed to GitLab</li>
+        <li>Git URL submitted to Plussa that grades your exercise</li>
+    </ul>
+    <p>Done!</p>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Node.js - createServer method</title>
+</head>
+<h1>Node.js - createServer method</h1>
+
+<p>The main source for the second week is the <a href="https://nodejs.org/docs/latest-v13.x/api/">Node
+        documentation</a>. </p>
+<p>For getting started you could read the <a
+        href="https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/">Anatomy of a HTTP Transaction</a>, and
+    view a student-proposed video <a href="https://youtu.be/lm86czWdrk0">Node JS Tutorial for Beginners #12 - Creating a
+        Server</a>.</p>
+
+<h2>Exercise overview</h2>
+<p>In this exercise you get to create a server using Node.js's built-in <a
+        href="https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener">http module's
+        createServer
+        method</a>.</p>
+
+<p>The implemented server must have the following functionality: </p>
+<ul>
+    <li>created server listens on localhost port 3000</li>
+    <li>when a user sends a request to server's root path (for example localhost:3000/), the server responds by reading
+        the contents of the index.html file in this directory, and sending it to the user as response</li>
+</ul>
+
+<h2>Implementing the exercise</h2>
+<p>Start by making sure you are in your local clone of the Git repository, and in its
+    <em>exercises/02_http/2.1-create-server</em> directory where this
+    instructions.html file is placed. Then:</p>
+<ul>
+    <li>In this directory run the command <code>npm init</code> to initialize your Node project. Use the default values
+        offered by npm by pressing
+        Enter.
+    </li>
+    <li>Write your server code in <em>index.js</em> file you create inside this directory</li>
+    <li>In your server code use createServer-method to create the server</li>
+    <li>Inside createServer method's callback, use the Node.js's built-in fs module's readFile method to read the
+        existing
+        index.html file from the directory. <a
+            href="https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback">Readfile method
+            documentation</a>.</li>
+    <li>Use <a
+            href="https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers">response's
+            writeHead-method</a> to set the 200 HTTP response status code and "text/html" content type for the
+        response.</li>
+    <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_write_chunk_encoding_callback">write
+            method</a> to add the data read from the index.html file to the response</li>
+    <li>Use response's <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback">end
+            method</a> to end adding to the response, and send it to the client</li>
+    <li>You can run your server by running the command <em>node index.js</em> in this directory</li>
+    <li>Correct all possible mistakes</li>
+    <li>Commit your index.js and package.json files, and push them to your Git repository.</li>
+    <li>Submit your work in Plussa</li>
+</ul>
+
+<h2>About testing</h2>
+<p>A note for testing: Chrome and other browsers might send two requests</p>
+
+<p>When communicating with the server Chrome (and likely some other browsers) might send two requests, and not just one,
+    as
+    expected. The first requests fetches the favicon, and second one the content proper from server. This has to be
+    taken
+    into considered when testing the code, and it is not considered a bug in the student's exercise code.</p>
+
+<p>Testing by sending request with curl, Postman, or a similar software is recommended. This avoids the two-requests
+    problem.</p>

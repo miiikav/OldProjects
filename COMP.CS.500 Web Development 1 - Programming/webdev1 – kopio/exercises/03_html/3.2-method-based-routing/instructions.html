@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>3.2 Method Based Routing</title>
+  </head>
+  <body>
+    <h1>3.2 Method Based Routing</h1>
+
+    <h2>Exercise Overview</h2>
+
+    <p>
+      In this exercise you create a Node server which will respond to any http GET request with one
+      HTML file and to any POST request with another HTML file.
+    </p>
+
+    <p>The server must have the following functionality:</p>
+
+    <ul>
+      <li>Server listens on localhost port 3000</li>
+      <li>
+        On every http GET request the server responds with the contents of <em>get.html</em>
+        file in this directory.
+      </li>
+      <li>
+        On every http POST request the server responds with the contents of <em>post.html</em>
+        file in this directory.
+      </li>
+      <li>
+        On every other type of request the server responds with a status code <code>405</code> (Method Not Allowed).
+      </li>
+    </ul>
+
+    <h2>Implementing the Exercise</h2>
+
+    <p>
+      Start by making sure you are in your local clone of the Git repository, and in its
+      <em>exercises/03_html/3.2-method-based-routing</em> directory where this <em>instructions.html</em>
+      file is located. Then:
+    </p>
+
+    <ul>
+      <li>
+        In this directory run the command <code>npm init</code> to initialize your Node project.
+        Use the default values proposed by <em>npm</em> by pressing <kbd>Enter</kbd>.
+      </li>
+      <li>Write your server code into <em>index.js</em> file in this directory.</li>
+      <li>
+        In exercise <em>2.6 Routing</em> your server responded differently based on the URL.
+        This time you will choose your response based on the http method of the request:
+        <ul>
+          <li>
+            Any GET request should be responded with the contents of the <em>get.html</em>
+            file in this directory.
+          </li>
+          <li>
+            Any POST request should be responded with the contents of the <em>post.html</em>
+            file in this directory.
+          </li>
+          <li>
+            Any other request should be responded with a status code <code>405</code> and the response
+            should also have a header: <code>Allow: GET, POST</code>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Every GET and POST response should also have <code>Content-Type: text/html</code> and status code
+        <code>200</code>.
+      </li>
+    </ul>
+
+    <p>
+      <strong>Remember to commit and push all changes to your Git repository before you submit
+      your work in Plussa.</strong>
+    </p>
+
+    <h2>About Testing</h2>
+
+    <p>
+      Once your server is up and running you can test it with the <em>index.html</em> that you created in
+      the previous exercise <em>3.1 HTML Forms</em>. Open the file in your browser and submit the first
+      form to test the response to the GET method and submit the second form to test POST response. Of course
+      Postman or curl or some other similar software can also be used to test the server.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mocha and Chai</title>
+</head>
+
+<body>
+    <h1>Instructions for "Hello Mocha"</h1>
+
+    <p>In node.js, Mocha and Jest are the most common test frameworks.</p>
+    <p>In the net, there exists plenty of comparisons, for example,
+        <a href="https://blog.usejournal.com/jest-vs-mocha-whats-the-difference-235df75ffdf3">Jest vs Mocha: Which
+            Should You Choose?</a>.
+    </p>
+    <p>Mocha was selected as a testing tool because it is relatively mature, but still flexible: <a
+            href="https://mochajs.org/">more info here</a>.
+
+    </p>
+    <p>Required steps to set-up the mocha testing environment</p>
+    <ul>
+        <li>npm install mocha</li>
+        <li>npm install chai</li>
+        <li>npm install mochawesome</li>
+        <li>Modify package.json
+            <pre>
+        "scripts": {
+            "test": "mocha"
+          },
+        </pre>
+            After these additions, tests can be run with the command:<br>
+            <code>npm test</code>, or <code>mocha</code>.
+            All tests matching the pattern "*.test.js" will then be run.
+            It is also possible to run tests separately:<br>
+            <code>mocha TEST.test.js</code>,
+        </li>
+        <li>After the test environment is set:<ul>
+                <li>execute file <code>/exercises/01_tools/test/mocha.test.js to check the current situation</code></li>
+                <li>modify <code>hellomocha.js</code> so that tests will pass</li>
+                <li>once passed, copy the git url and submit it in the Hello Mocha! Plussa exercise</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>With mocha, tests are defined as it test cases that are grouped with describe.
+        Grouping can be nested.
+        Cases are built like sentences that start with
+        <code>it()</code>. The first parameter is the debugging message that is
+        printed in the test log. The second parameter is a function, that is the actual test.
+        Its return value defines whether the test succeeded or not.
+    </p>
+    <p>Mocha test, <code>test/mocha.test.js</code> checks hellomocha.js <code>grade()</code> function.
+        It expect a certain type of output for the <code>grade()</code> to be correct.
+        In mocha, if the test assertion or expectation prove to be true, test succeeds.
+        Chai comes in to play by offering the <code>expect()</code> function
+        for judging the end result.
+        <code>chai.expect()</code> comes with a pile of utilities,
+        such as expect(something).to.exist, expect(something).to.equal(something_else),
+        and so forth. The dot notation may look a bit odd; it is an example of
+        method chaining.
+    </p>
+
+    <p>An example:
+    </p>
+    <pre><code>
+'use strict';
+
+const chai = require('chai');
+const expect = chai.expect;
+
+const grade = require('../grade');
+describe('grade()', function() {
+    it('should return 0 if answer is not a string', function() {
+        const answers = [1, null, undefined, {}, [], true, Symbol(), NaN];
+        const maxPoints = 2;
+        answers.forEach((answer) => {
+            const grade = Hello.grade(answer, maxPoints);
+            expect(grade).to.equal(0);
+        });
+    });
+});
+</code></pre>
+
+    <p>The function <code>grade(answer, maxPoints)</code> returns zero in case of a non-string answer parameter.
+        Similarly, zero is returned if maxPoints is not an even number.
+        In addition, <code>grade()</code> checks that answer has all the required parts in place.
+    </p>
+
+    <p>
+        Now, in hellomocha.js's <code>grade()</code> function, there is a few failing cases.
+        Correct <code>grade()</code>, so that all the tests are run successfully.
+        Commit the change, push it to the repository and return your
+        solution to Plussa.
+    </p>
+
+</body>
+
+</html>

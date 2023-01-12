@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demoing accessibility</title>
+</head>
+
+<body>
+    <header>
+    <h1>
+        Accessibility demo
+    </h1>
+</header>
+    <nav>
+        <ul>
+            <li>
+                <a href="https://google.com">Google</a>
+            </li>
+            <li>
+                <a href="https://tuni.com">TUNI</a>
+            </li>
+            <li>
+                <a href="https://plus.tuni.fi/">Plussa</a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/">Mozilla</a>
+            </li>
+            <li>
+                <a href="https://www.google.com/chrome/">Chrome</a>
+            </li>
+        </ul>
+    </nav>
+    <hr>
+    <main>
+    <h2 id="information">Your information</h2>
+        <form>
+            <p>Name:</p>
+            <input id="name" aria-label="name" autocomplete="off">
+            <p>homePage:</p>
+            <input id="homePage" aria-label="homePage" autocomplete="off">
+            <p>Email:</p>
+            <input id="email" aria-label="email" autocomplete="off">
+            <p>Password:</p>
+            <input id="password" aria-label="password" autocomplete="off">
+            <p>Favorite city</p>
+            <select id="favoriteCity" aria-label="favoriteCity" name="select">
+                <option value="1">Amsterdam</option>
+                <option value="2">London</option>
+                <option value="3">Moscow</option>
+                <option value="4">Los Angeles</option>
+                <option value="5">New York</option>
+            </select>
+            <img src="submit.png" alt="Submit button"  style="display:block; width: 200px; height: 200px;">
+        </form>
+    </main>
+
+</body>
+
+</html>

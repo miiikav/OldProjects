@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>3.1 HTML Forms</title>
+  </head>
+  <body>
+    <h1>3.1 HTML Forms</h1>
+
+    <h2>Exercise Overview</h2>
+
+    <p>
+      In this exercise you are going to create an HTML document that has
+      two forms. One form must use http GET for sending its data to the
+      server and the other form must use http POST for sending its data
+      to the server. The HTML of your document must be valid according to
+      <a href="https://validator.w3.org/">The W3C Markup Validation Service</a>.
+    </p>
+
+    <p>
+      When you open the finished document in a browser it should look like the image below.
+    </p>
+
+    <img src="./screenshot.jpg" alt="screenshot.jpg" title="Screenshot of finished page">
+
+    <h2>Implementing the Exercise</h2>
+
+    <p>
+      Start by making sure you are in your local clone of the Git repository, and in its
+      <em>exercises/03_html/3.1-html-forms</em> directory where this <em>instructions.html</em>
+      file is located. Then:
+    </p>
+
+    <ul>
+      <li>Create your document in <em>index.html</em> file inside this directory.</li>
+      <li>
+        Your document should have both a title and a top level heading (<em>h1</em>) with the
+        text <em>"3.1 HTML Forms"</em> without the quotation marks. The heading should be the
+        first child element of the HTML body.
+      </li>
+      <li>
+        Before each form you should have a second level heading (<em>h2</em>) with the texts
+        <em>"Form 1"</em> and <em>"Form 2"</em> respectively.</li>
+    </ul>
+
+    <p>
+      The first form should have the following properties and fields:
+    </p>
+
+    <ul>
+      <li>id: <em>"form1"</em></li>
+      <li>method of sending data: <em>"GET"</em></li>
+      <li>URL where form sends its data: <em>"http://localhost:3000/"</em></li>
+      <li>one <em>hidden</em> input field with name <em>"hidden"</em> and value <em>"Hello from form1"</em></li>
+      <li>one <strong>required</strong> <em>text</em> input with name <em>"text"</em></li>
+      <li>submit button with text: <em>"Send Form 1"</em></li>
+    </ul>
+
+    <p>
+      The second form should have the following properties and fields:
+    </p>
+
+    <ul>
+      <li>id: <em>"form2"</em></li>
+      <li>method of sending data: <em>"POST"</em></li>
+      <li>URL where form sends its data: <em>"http://localhost:3000/"</em></li>
+      <li>one <em>hidden</em> input field with name <em>"hidden"</em> and value <em>"Hello from form2"</em></li>
+      <li>one <em>textarea</em> with name <em>"message"</em> and 35 columns and 15 rows</li>
+      <li>submit button with text: <em>"Send Form 2"</em></li>
+    </ul>
+
+    <p>
+      <strong>NOTE:</strong> Use <em>button</em> elements for submit buttons on both forms!
+    </p>
+
+    <p>
+      <strong>Remember to commit <em>index.html</em> and push the changes to your Git repository
+      before you submit your work in Plussa.</strong>
+    </p>
+  </body>
+</html>

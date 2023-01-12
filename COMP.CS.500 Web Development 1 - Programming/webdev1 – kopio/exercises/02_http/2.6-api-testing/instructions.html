@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 2.6 - API testing</title>
+</head>
+
+<body>
+    <h1>Exercise 2.6 - API testing</h1>
+    <h2>Exercise overview</h2>
+    <p>In this exercise you get to implement a set of tests using Mocha and Chai. The tests will be created against the
+        routing API you created in the previous
+        exercise "2.5 Routing".</p>
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/02_http/2.6-api-testing</em> directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>In this directory run the command <code>npm init</code> to initialize your Node project. Use the default
+            values
+            offered by npm by pressing
+            Enter.
+        </li>
+        <li>You need to install the Node modules Mocha, Chai, and Chai-http as development dependecies with the command
+            <em>npm install --save-dev mocha chai chai-http</em>. This command fetches the modules and adds them to
+            <em>devDependencies</em> section of the
+            package.json
+            file
+        </li>
+        <li>You need to edit the package.json-file's scripts-section to enable easier running of the tests. Edit the
+            scripts section to look like:
+            <pre>
+            "scripts": {
+                "test": "mocha --timeout 10000"
+            },
+        </pre>
+            After this you can run your tests by running the command <em>npm test</em> in this directory
+        </li>
+        <li>Copy the working <em>index.js</em> file you created in the exercise 2.5 from the directory
+            ../2.5-routing in to this directory, for example with command <em>cp ../2.5-routing/index.js .</em></li>
+        <li>You need to edit the index.js file so that the server you create is exportable as a module, this is
+            required by the chai-http module. This can simply be done by exporting your createServer function with
+            module.exports. To do this, start by editing the starting line of the function. For example the line
+            <pre>
+                http.createServer((request, response) => {
+            </pre>
+            would after editing read:
+            <pre>
+                module.exports = http.createServer((request, response) => {
+            </pre>
+        </li>
+        <li>You also need to copy the HTML files from the ../2.5-routing directory to this directory with command
+            <em>cp
+                ../2.5-routing/index.html ../2.5-routing/homer.html ../2.5-routing/bradbury.html .</em></li>
+        <li>Write your tests in to the existing file /test/api.js. The file already has some code for requiring the
+            needed modules, and reading the HTML files.</li>
+        <li>In the file /test/api.js there are TODO's indicating where you must write your tests. You should not make
+            other changes to this file</li>
+        <li>Correct all possible mistakes</li>
+        <li>Commit your index.js, test/api.js, and package.json files, and push them to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

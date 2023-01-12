@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>The UI of the online shop</h2>
+    <p>
+        You implement the UI for a online shop using <em>HTML only</em>. Implement the exercise in the
+        <em>index.html</em> in the
+        same directory as this <em>instructions.html</em> file. It should be valid HTML5.
+        CSS and CSS rules are not a part of this exercise, but CSS rules are implemented in later exercise in this
+        round.</p>
+    <p>
+        When creating the UI you will need to use <em>semantic tags</em>, for more information about semantic tags see
+        <a
+            href="https://www.semrush.com/blog/semantic-html5-guide/">https://www.semrush.com/blog/semantic-html5-guide/</a>
+        .
+    </p>
+    <p>
+
+    <h3>Semantic tags - a brief overview</h3>
+
+    <ul>
+        <li>
+            <strong>header</strong> – The &lt;header&gt; element defines content that should be considered the
+            introductory
+            information of a page or section.
+        </li>
+        <li>
+            <strong>nav</strong> – Main navigation menu links would all be placed in a &lt;nav&gt; tag. But sub
+            navigation
+            menus
+            elsewhere on the page could also get one.
+        </li>
+
+        <li>
+            <strong>main</strong> – The body of a page should go in the &lt;main&gt; tag – not sidebars and main
+            navigation.
+            There should
+            be only one per page.
+        </li>
+        <li>
+            <strong>article</strong> – The &lt;article&gt; element defines self-contained content that could stand
+            independently of
+            the page or site it’s on. For example, a blog post.
+        </li>
+
+        <li>
+            <strong>section</strong> – Using &lt;section&gt; is a way of grouping together nearby content of a similar
+            theme. A
+            section tag differs to an article tag because it isn’t necessarily self-contained.
+        </li>
+
+        <li>
+            <strong>aside</strong> – An &lt;aside&gt; element defines content that’s less important. It’s often used for
+            sidebars –
+            areas that hold complementary, not vital information.
+        </li>
+        <li>
+            <strong>footer</strong> – You would use &lt;footer&gt; at the base of a page or section. It might include
+            contact
+            information
+            and some site navigation.
+        </li>
+    </ul>
+    </p>
+
+    <p>
+        See <em>Fig.1.</em> for visualization of the layout that can be achieved with these elements.
+    </p>
+    <img src="img/onlineshop.png" width="40%">
+    <caption>Fig.1. Online shop UI</caption>
+
+    <ul>
+        <li><em>header</em> is the first container, containing a nested <em>nav</em> element.</li>
+        <li>Next, comes <em>main</em> element, with an <em>article</em> element inside it. Inside the <em>article</em>,
+            there are three <em>section</em> and two <em>aside</em> elements.</li>
+        <li><em>footer</em> is the bottommost element under <em>main</em>. <em>footer</em> contains two <em>nav</em>
+            elements.</li>
+    </ul>
+    <p>The container-containee relationships in your <em>index.html</em> file should be as described above.
+        If there are more than one containee, using IDs is necessary. IDs are unique, and they make it
+        easier to point to a specific element e.g. when positioning them. IDs should be as described in the table:
+    </p>
+    <table>
+        <tr>
+            <td>Parent element</td>
+            <td>Element requiring ID</td>
+            <td>IDs of the elements</td>
+        </tr>
+        <tr>
+            <td>article</td>
+            <td>section</td>
+            <td>sec1, sec2, and sec3</td>
+        </tr>
+        <tr>
+            <td>article</td>
+            <td>aside</td>
+            <td>aside1, aside2</td>
+        </tr>
+        <tr>
+            <td>footer</td>
+            <td>nav</td>
+            <td>nav1, nav2</td>
+        </tr>
+    </table>
+
+
+    <p>Notice: the actual positioning of the elements is achieved with CSS grids, which is implemented in the next
+        exercise.
+    </p>
+
+</body>
+
+</html>

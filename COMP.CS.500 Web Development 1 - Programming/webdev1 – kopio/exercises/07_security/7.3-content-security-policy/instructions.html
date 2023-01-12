@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 7.3 - Content Security Policy</title>
+</head>
+
+<body>
+    <h1>Exercise 7.3 - Content Security Policy</h1>
+    <h2>Exercise overview</h2>
+    <p>In this exercise you get to practice using <a href="https://www.w3.org/TR/CSP3/">Content Security Policy
+            (CSP)</a>. CSP is a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">modern(ish) mechanism
+            implemented in browsers</a> for dealing with XSS. It is not meant to used as
+        the only solution to alleviate XSS threats, but is a part of the overall solution.</p>
+
+    <p>In this exercise you get to write CSP
+        policies targeting loading of images and scripts.</p>
+
+    <h2>Implementing the exercise</h2>
+    <p>Start by making sure you are in your local clone of the Git repository, and in its
+        <em>exercises/7.3-content-security-policy</em>
+        directory where this
+        instructions.html file is placed. Then:</p>
+    <ul>
+        <li>Write your server code by modifying the existing <em>index.js</em> file in this directory</li>
+        <li>Write your code based on the TODOs in the index.js and these instructions</li>
+        <li>The directory also includes other files: index.html and js/let_me_run.js.
+            <ul>
+                <li><em>index.html</em> includes img tags for images that are fetched from Flickr (staticflickr.com) and
+                    Creative Commons (creativecommons.org) servers
+                </li>
+                <li><em>js/let_me_run.js</em> is local JavaScript file</li>
+            </ul>
+        </li>
+        <li>Run your server by running the command <em>node index.js</em> in this directory</li>
+        <li>With your browser navigate to 'http://localhost:3000/. You don't get to see beautiful images,
+            and you see the text: "Will we let the script run: NO". In the browser's DevTools you can see errors similar
+            to:
+            <pre>
+    "Refused to load the script 'http://localhost:3000/js/let_me_run.js' because it violates the following
+    Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback."</pre>
+        </li>
+        <li>You must now modify the index.js to include two CSP policies :
+            <ul>
+                <li>First: a policy which allows retrieving the images from the two domains used in the index.html:
+                    Flickr
+                    (staticflickr.com) and
+                    Creative Commons (creativecommons.org)</li>
+                <li>Second: a policy which allows to run the script js/let_me_run.js, which is hosted on the localhost
+                    server, so its self hosted
+                </li>
+            </ul>
+            You must NOT allow images or scripts to be fetched from other locations.
+        </li>
+        <li>Both policies must be defined as value of the exactly one <em>Content-Security-Policy</em> header in
+            your
+            server's response</li>
+        <li>When you get the correct CSP policies in place the page will show the images, and the text will change to
+            "Will we let the script run: OH, YES WE SHALL!"</li>
+        <li>Commit your index.js file, and push it to your Git repository.</li>
+        <li>Submit your work in Plussa</li>
+    </ul>
+</body>
+
+</html>

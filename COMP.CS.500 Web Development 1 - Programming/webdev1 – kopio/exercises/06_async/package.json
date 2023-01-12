@@ -1,0 +1,25 @@
+{
+  "name": "ex3_ex4_ex5",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@svgdotjs/svg.js": "^3.0.16",
+    "babel-core": "^6.26.3",
+    "chai": "^4.2.0",
+    "dom-parser": "^0.1.6",
+    "mocha": "^8.1.3",
+    "nodemon": "^2.0.4",
+    "performance-now": "^2.1.0",
+    "svg.js": "^2.7.1",
+    "svgdom": "^0.1.8"
+  },
+  "scripts": {
+    "test": "cd ex3;echo 'Now: ex3'; mocha --timeout 3000; cd ../ex4;echo 'Now: ex4'; mocha --timeout 3000; cd ../ex5; echo 'Now ex5'; mocha --timeout 3000;"
+  },
+  "author": "",
+  "license": "ISC"
+}
