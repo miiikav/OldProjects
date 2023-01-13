@@ -1,0 +1,26 @@
+-- Tietokantojen perusteet 2017
+-- Harjoitukset 1, tehtävä 6
+-- Tuomo Ikävalko
+-- Ikavalko.Tuomo.J@uta.fi
+
+-- 6
+1.FROM alkuaine
+
+ merkki |   nimi    | loytaja   
+ --------+-----------+----------
+ Am     | Amerikium | Seaborg
+ Bk     | Berkelium | Seaborg
+ Au     | Kulta     |
+ Bi     | Vismutti  | Agricola 
+
+2.WHERE loytaja <> 'Agricola';
+
+ merkki |   nimi    | loytaja   
+ --------+-----------+----------
+  Bi     | Vismutti  | Agricola 
+  
+3.SELECT nimi
+
+   nimi    
+-----------
+ Vismutti  

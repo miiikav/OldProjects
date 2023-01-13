@@ -1,0 +1,14 @@
+-- Tietokantojen perusteet 2017
+-- Harjoitukset 1, tehtävä 7
+-- Tuomo Ikävalko
+-- Ikavalko.Tuomo.J@uta.fi
+
+-- 7
+ Moninpeli
+a)Käyttäjänimiä, peliaikoja eri pelimuodoissa, voittojen määriä, tappioiden määriä.
+b)Joko ihan vain statistiikkaa varten,
+ tai sitten sitä voisi käyttää kilpailullisemmissa pelimuodoissa määrittämään pelaajan taitotason,
+ jolloin algoritmi voisi pistää pelaajan peliin muiden samantasoisten pelaajien kanssa.
+c) Statistiikat eivät välttämättä kerro kaikkea pelaajasta.
+d) Kuten jo edellä mainitsin, algoritmi voisi tehdä hakuja tai pelaaja voisi itse katsoa edistymistään.
+ 

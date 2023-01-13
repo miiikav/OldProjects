@@ -1,0 +1,6 @@
+-- Tuomo Ikävalko
+-- ti427620
+-- tuomo.ikavalko@tuni.fi
+
+1.2) Kohdan 1.1 kyselyssä on annettu tauluille ja osalle sarakkeista uudet, tilapäiset nimet. Onko tämä ollut välttämätöntä? Jos on, niin miksi?
+Se voi olla tarpeen jos monessa taulussa on samannimisiä rivejä esim. viinitila.nimi ja viini.nimi

@@ -1,0 +1,10 @@
+-- Tietokantojen perusteet 2017
+-- Harjoitukset 1, tehtävä 4
+-- Tuomo Ikävalko
+-- Ikavalko.Tuomo.J@uta.fi
+
+-- 4
+eka kohdassa on puuttuva arvo vaikka sen pitäisi olla taulun pääavain
+toka kohdan ei pitäisi sallia tyhjiä arvoja ja pisin sallittu merkkijono pitäisi olla 6 merkkiä pitkä
+kolmas kohdan a ei ole kokonaisluku
+neljäs kohdan 2662.4 on 5 numeroa suurin sallittu luku olisi 4 numeroinen

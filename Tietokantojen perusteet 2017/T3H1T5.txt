@@ -1,0 +1,18 @@
+-- Tietokantojen perusteet 2017
+-- Harjoitukset 1, tehtävä 5
+-- Tuomo Ikävalko
+-- Ikavalko.Tuomo.J@uta.fi
+
+-- 5.1
+true
+--5.2
+false
+--5.3
+unknown
+--5.4
+unknown
+--5.5
+true
+--5.6
+false
+

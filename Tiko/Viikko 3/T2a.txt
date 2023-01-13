@@ -1,0 +1,6 @@
+-- Tuomo Ikävalko
+-- ti427620
+-- tuomo.ikavalko@tuni.fi
+
+T2 a) yksi tai useampi Henkilö on töissä nollassa tai yhdessä HuoltoFirmassa. 0 tai useampi HuoltoFirma huoltaa 0 tai useampaa Fillaria. Henkilö voi omistaa 0 tai useamman 
+Fillarin.
