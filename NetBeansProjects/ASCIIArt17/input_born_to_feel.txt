@@ -1,0 +1,10 @@
+rotatel
+rotatel
+rotatel
+rotatel
+rotater
+rotater
+rotater
+rotater
+print
+quit
