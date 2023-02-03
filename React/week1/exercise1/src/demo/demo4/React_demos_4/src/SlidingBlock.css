@@ -1,0 +1,4 @@
+.animatedBlock {
+  transition-property: left top;
+  transition-duration: 0.5s;
+}
