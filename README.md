@@ -5,6 +5,8 @@ Godot contains a game designed for a game development course
 
 NetBeansProjects is a collection of java programs from different classes
 
+React contains exercises from react course
+
 Tietokantojen perusteet ja tiko are both sql classes
 
 Tira is datastructures class and comp.cs.300 is the main project of that class
